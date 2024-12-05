@@ -7,4 +7,4 @@ proc writeValueArray*(array: var ValueArray, value: Value) : void =
     array.add(value)
 
 proc printValue*(value: Value) : void =
-    stdout.write fmt"{value:g} "
+    stdout.write fmt"{value:g}"

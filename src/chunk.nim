@@ -10,10 +10,12 @@ type
 
 type Chunk* = ref object of RootObj
     code*       : seq[Byte]
+    lines*      : seq[int]
     constants*  : ValueArray
 
-proc writeChunk* (chunk: Chunk, byte: (int | OpCode) ) : void =
+proc writeChunk* (chunk: Chunk, byte: (int | OpCode), line: int) : void =
     chunk.code.add(Byte(byte))
+    chunk.lines.add(line)
 
 proc addConstant*(chunk: Chunk, value: Value) : int = 
     writeValueArray(chunk.constants, value)
